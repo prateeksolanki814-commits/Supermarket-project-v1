@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # Import custom modules
-from database import db, DatabaseManager
+from database import DatabaseManager
 from inventory import InventoryManager
 from sales import SalesManager
 from analytics import Analytics
