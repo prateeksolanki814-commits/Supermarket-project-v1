@@ -118,19 +118,21 @@ class DatabaseManager:
                     FOREIGN KEY(product_id) REFERENCES inventory(product_id)
                 )
             ''')
+
             # Business Capital Table
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS business_capital (
-                id INTEGER PRIMARY KEY CHECK (id = 1),
-                total_money REAL NOT NULL DEFAULT 0
-             )
+                    id INTEGER PRIMARY KEY CHECK (id = 1),
+                    total_money REAL NOT NULL DEFAULT 0
+                )
             ''')
 
-# Create default record
-cursor.execute('''
-    INSERT OR IGNORE INTO business_capital (id, total_money)
-    VALUES (1, 0)
-''')
+            # Create default record
+            cursor.execute('''
+                INSERT OR IGNORE INTO business_capital (id, total_money)
+                VALUES (1, 0)
+            ''')
+
             conn.commit()
             logger.info("Database initialized successfully")
         except Exception as e:
