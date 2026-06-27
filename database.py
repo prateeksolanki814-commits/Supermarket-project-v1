@@ -210,27 +210,27 @@ class DatabaseManager:
         """Close all database connections."""
         pass  # SQLite handles this automatically
     def get_business_money(self):
-    result = self.fetch_one(
+        result = self.fetch_one(
         "SELECT total_money FROM business_capital WHERE id=1"
     )
-    return result["total_money"] if result else 0
+        return result["total_money"] if result else 0
 
 
-def set_business_money(self, amount):
-    self.execute_query(
-        "UPDATE business_capital SET total_money=? WHERE id=1",
-        (amount,)
+    def set_business_money(self, amount):
+        self.execute_query(
+            "UPDATE business_capital SET total_money=? WHERE id=1",
+            (amount,)
     )
 
 
-def add_business_money(self, amount):
-    current = self.get_business_money()
-    self.set_business_money(current + amount)
+    def add_business_money(self, amount):
+        current = self.get_business_money()
+        self.set_business_money(current + amount)
 
 
-def deduct_business_money(self, amount):
-    current = self.get_business_money()
-    self.set_business_money(current - amount)
+    def deduct_business_money(self, amount):
+        current = self.get_business_money()
+        self.set_business_money(current - amount)
 
 # Global database instance
 db = DatabaseManager()
